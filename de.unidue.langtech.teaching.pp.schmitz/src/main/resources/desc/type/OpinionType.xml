@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>OpinionType</name>
+  <description>The OpinionType includes both the gold standard value for a tweets subjective rating and the detected rating.
+It can be either negative, neutral or positive, depending on the general opinion of the author on a non specific topic.</description>
+  <version/>
+  <vendor/>
+<types>
+    <typeDescription>
+      <name>de.twitter.type.GoldOpinion</name>
+      <description>The actual opinion shown in this tweet</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>opinion</name>
+          <description>can be negative, neutral or positive</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>de.twitter.type.DetectedOpinion</name>
+      <description>The opinion that is determined by the opinion evaluator</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>opinion</name>
+          <description>can be negative, neutral or positive</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>
