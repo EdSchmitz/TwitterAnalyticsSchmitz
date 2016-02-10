@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** The actual opinion shown in this tweet
- * Updated by JCasGen Mon Feb 08 19:26:33 CET 2016
- * XML source: C:/Users/Edgar/Universität/Praxisprojekt Textanalysewerkzeuge/eclipse/git/TwitterAnalyticsSchmitz/de.unidue.langtech.teaching.pp.schmitz/src/main/java/de/twitter/types/OpinionType.xml
+ * Updated by JCasGen Wed Feb 10 01:11:57 CET 2016
+ * XML source: C:/Users/Edgar/Universität/Praxisprojekt Textanalysewerkzeuge/eclipse/git/TwitterAnalyticsSchmitz/de.unidue.langtech.teaching.pp.schmitz/src/main/resources/desc/type/OpinionType.xml
  * @generated */
 public class GoldOpinion extends Annotation {
   /** @generated

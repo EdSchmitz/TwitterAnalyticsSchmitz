@@ -8,12 +8,14 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.twitter.type.DetectedOpinion;
 import de.unidue.langtech.teaching.pp.type.DetectedLanguage;
 
 /**
- * The baseline always identifies "EN" as the document language.
+ * The baseline always identifies positive as the document opinion.
+ * For the big testset twitter_training_complete.txt of 11338 tweets it achieves 4215 correct classifications.
  * 
- * @author zesch
+ * @author Schmitz
  *
  */
 public class BaselineExample
@@ -29,8 +31,8 @@ public class BaselineExample
         Collection<Token> tokens = JCasUtil.select(jcas, Token.class);
         System.out.println("CAS contains " + tokens.size() + " tokens.");
         
-        DetectedLanguage languageAnno = new DetectedLanguage(jcas);
-        languageAnno.setLanguage("EN");
-        languageAnno.addToIndexes();
+        DetectedOpinion opinionAnno = new DetectedOpinion(jcas);
+        opinionAnno.setOpinion("positive");
+        opinionAnno.addToIndexes();
     }
 }

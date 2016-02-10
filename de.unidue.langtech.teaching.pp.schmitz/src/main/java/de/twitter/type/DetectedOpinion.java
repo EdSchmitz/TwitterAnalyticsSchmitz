@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** The opinion that is determined by the opinion evaluator
- * Updated by JCasGen Mon Feb 08 19:26:33 CET 2016
- * XML source: C:/Users/Edgar/Universität/Praxisprojekt Textanalysewerkzeuge/eclipse/git/TwitterAnalyticsSchmitz/de.unidue.langtech.teaching.pp.schmitz/src/main/java/de/twitter/types/OpinionType.xml
+ * Updated by JCasGen Wed Feb 10 01:11:57 CET 2016
+ * XML source: C:/Users/Edgar/Universität/Praxisprojekt Textanalysewerkzeuge/eclipse/git/TwitterAnalyticsSchmitz/de.unidue.langtech.teaching.pp.schmitz/src/main/resources/desc/type/OpinionType.xml
  * @generated */
 public class DetectedOpinion extends Annotation {
   /** @generated
@@ -96,6 +96,28 @@ public class DetectedOpinion extends Annotation {
     if (DetectedOpinion_Type.featOkTst && ((DetectedOpinion_Type)jcasType).casFeat_opinion == null)
       jcasType.jcas.throwFeatMissing("opinion", "de.twitter.type.DetectedOpinion");
     jcasType.ll_cas.ll_setStringValue(addr, ((DetectedOpinion_Type)jcasType).casFeatCode_opinion, v);}    
+   
+    
+  //*--------------*
+  //* Feature: opinionScore
+
+  /** getter for opinionScore - gets This will store the accumulated scores of positive/negative rated words
+   * @generated
+   * @return value of the feature 
+   */
+  public int getOpinionScore() {
+    if (DetectedOpinion_Type.featOkTst && ((DetectedOpinion_Type)jcasType).casFeat_opinionScore == null)
+      jcasType.jcas.throwFeatMissing("opinionScore", "de.twitter.type.DetectedOpinion");
+    return jcasType.ll_cas.ll_getIntValue(addr, ((DetectedOpinion_Type)jcasType).casFeatCode_opinionScore);}
+    
+  /** setter for opinionScore - sets This will store the accumulated scores of positive/negative rated words 
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setOpinionScore(int v) {
+    if (DetectedOpinion_Type.featOkTst && ((DetectedOpinion_Type)jcasType).casFeat_opinionScore == null)
+      jcasType.jcas.throwFeatMissing("opinionScore", "de.twitter.type.DetectedOpinion");
+    jcasType.ll_cas.ll_setIntValue(addr, ((DetectedOpinion_Type)jcasType).casFeatCode_opinionScore, v);}    
   }
 
     

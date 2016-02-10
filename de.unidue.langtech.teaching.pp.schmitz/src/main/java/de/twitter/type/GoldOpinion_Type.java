@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** The actual opinion shown in this tweet
- * Updated by JCasGen Mon Feb 08 19:26:33 CET 2016
+ * Updated by JCasGen Wed Feb 10 01:11:57 CET 2016
  * @generated */
 public class GoldOpinion_Type extends Annotation_Type {
   /** @generated 

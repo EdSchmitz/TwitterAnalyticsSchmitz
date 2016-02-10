@@ -20,10 +20,7 @@ import de.twitter.type.GoldOpinion;
 import de.unidue.langtech.teaching.pp.type.GoldLanguage;
 
 /**
- * Example of a simple reader that reads a text file 
- * and puts each line of the file in a single document.
- * 
- * @author zesch
+ * @author Schmitz
  *
  */
 public class TweetReader
