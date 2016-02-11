@@ -91,3 +91,50 @@ Of these 309 were detected CORRECT AS NEUTRAL
 The system detected a total of 320 positive entrys (there were 380)
 The system detected a total of 67 negative entrys (there were 181)
 The system detected a total of 614 neutral entrys (there were 440)
+
+-------------------------------------------------------------------------------------
+		float approximation = strongNegatives*-3.5f+weakNegatives*-2f+weakPositives*1.5f+strongPositives*3f;
+		int neutralImpact = weakNeutrals * 1 + strongNeutrals * 2;
+		if (neutralImpact != 0){
+			approximation /= neutralImpact;
+		}
+-0.2 <neutral< 0.5
+
+---------BEGIN OF EVALUATION---------
+5802 out of 11338 are correct.
+That is a rate of 51.17305%
+--------------------------------
+There were 4215 positive documents.
+Of these 2634 were detected CORRECT AS POSITIVE
+Of these 665 were detected FALSE AS NEGATIVE
+Of these 916 were detected FALSE AS NEUTRAL
+--------------------------------
+There were 1798 negative documents.
+Of these 562 were detected FALSE AS POSITIVE
+Of these 859 were detected CORRECT AS NEGATIVE
+Of these 377 were detected FALSE AS NEUTRAL
+--------------------------------
+There were 5325 neutral documents.
+Of these 1852 were detected FALSE AS POSITIVE
+Of these 1164 were detected FALSE AS NEGATIVE
+Of these 2309 were detected CORRECT AS NEUTRAL
+--------------------------------
+The system detected a total of 5048 positive entrys (there were 4215)
+	 The precision score for positive documents is: 52.17908%
+	 The recall score for positive documents is: 62.4911%
+The system detected a total of 2688 negative entrys (there were 1798)
+	 The precision score for negative documents is: 31.956846%
+	 The recall score for negative documents is: 47.775307%
+The system detected a total of 3602 neutral entrys (there were 5325)
+	 The precision score for neutral documents is: 64.10328%
+	 The recall score for neutral documents is: 43.361504%
+-----------------------
+-----------------------
+The average score for actually positive documents was: 1.9360136
+The average score for detected positive documents was: 3.2143447
+-----------------------
+The average score for actually negative documents was: -0.54799324
+The average score for detected negative documents was: -2.4291604
+-----------------------
+The average score for actually neutral documents was: 0.48590022
+The average score for detected neutral documents was: 0.018319791
