@@ -1,0 +1,93 @@
+Systems and Scores:
+
+TestSet: Twitter1k.txt
+--------------------------------------------------
+
+
+float approximation = strongNegatives*-2+weakNegatives*-1+weakPositives*1+strongPositives*2;
+Sharp line = 0.
+---------BEGIN OF EVALUATION---------
+490 out of 1001 are correct.
+--------------------------------
+There were 380 positive documents.
+Of these 231 were detected CORRECT AS POSITIVE
+Of these 35 were detected FALSE AS NEGATIVE
+Of these 114 were detected FALSE AS NEUTRAL
+--------------------------------
+There were 181 negative documents.
+Of these 74 were detected FALSE AS POSITIVE
+Of these 57 were detected CORRECT AS NEGATIVE
+Of these 50 were detected FALSE AS NEUTRAL
+--------------------------------
+There were 440 neutral documents.
+Of these 172 were detected FALSE AS POSITIVE
+Of these 66 were detected FALSE AS NEGATIVE
+Of these 202 were detected CORRECT AS NEUTRAL
+--------------------------------
+The system detected a total of 477 positive entrys (there were 380)
+The system detected a total of 158 negative entrys (there were 181)
+The system detected a total of 366 neutral entrys (there were 440)
+
+Observations:
+(1) Many positive documents are detected as neutral.
+(2) Many negative documents are detected as positive.
+(3) Many neutral documents are detected as positive.
+
+Ideas:
+(1), (3) dont only classify 0 scores as neutral, give it tolerance.
+(2) increase value of negative words.
+
+
+
+--------------------------------------------------
+
+float approximation = strongNegatives*-3f+weakNegatives*-1.5f+weakPositives*1.25f+strongPositives*2.5f;
+-0.5<neutral<0.5
+
+---------BEGIN OF EVALUATION---------
+492 out of 1001 are correct.
+--------------------------------
+There were 380 positive documents.
+Of these 231 were detected CORRECT AS POSITIVE
+Of these 35 were detected FALSE AS NEGATIVE
+Of these 114 were detected FALSE AS NEUTRAL
+--------------------------------
+There were 181 negative documents.
+Of these 73 were detected FALSE AS POSITIVE
+Of these 58 were detected CORRECT AS NEGATIVE
+Of these 50 were detected FALSE AS NEUTRAL
+--------------------------------
+There were 440 neutral documents.
+Of these 171 were detected FALSE AS POSITIVE
+Of these 66 were detected FALSE AS NEGATIVE
+Of these 203 were detected CORRECT AS NEUTRAL
+--------------------------------
+The system detected a total of 475 positive entrys (there were 380)
+The system detected a total of 159 negative entrys (there were 181)
+The system detected a total of 367 neutral entrys (there were 440)
+
+------------------------------------------------------------------------------
+
+float approximation = strongNegatives*-3f+weakNegatives*-1.5f+weakPositives*1.25f+strongPositives*2.5f;
+2<neutral<2
+---------BEGIN OF EVALUATION---------
+503 out of 1001 are correct.
+--------------------------------
+There were 380 positive documents.
+Of these 162 were detected CORRECT AS POSITIVE
+Of these 18 were detected FALSE AS NEGATIVE
+Of these 200 were detected FALSE AS NEUTRAL
+--------------------------------
+There were 181 negative documents.
+Of these 44 were detected FALSE AS POSITIVE
+Of these 32 were detected CORRECT AS NEGATIVE
+Of these 105 were detected FALSE AS NEUTRAL
+--------------------------------
+There were 440 neutral documents.
+Of these 114 were detected FALSE AS POSITIVE
+Of these 17 were detected FALSE AS NEGATIVE
+Of these 309 were detected CORRECT AS NEUTRAL
+--------------------------------
+The system detected a total of 320 positive entrys (there were 380)
+The system detected a total of 67 negative entrys (there were 181)
+The system detected a total of 614 neutral entrys (there were 440)

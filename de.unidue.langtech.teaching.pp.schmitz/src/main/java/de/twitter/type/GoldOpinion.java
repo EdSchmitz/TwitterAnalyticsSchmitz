@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** The actual opinion shown in this tweet
- * Updated by JCasGen Wed Feb 10 01:11:57 CET 2016
+ * Updated by JCasGen Wed Feb 10 10:22:39 CET 2016
  * XML source: C:/Users/Edgar/Universität/Praxisprojekt Textanalysewerkzeuge/eclipse/git/TwitterAnalyticsSchmitz/de.unidue.langtech.teaching.pp.schmitz/src/main/resources/desc/type/OpinionType.xml
  * @generated */
 public class GoldOpinion extends Annotation {
@@ -96,6 +96,28 @@ public class GoldOpinion extends Annotation {
     if (GoldOpinion_Type.featOkTst && ((GoldOpinion_Type)jcasType).casFeat_opinion == null)
       jcasType.jcas.throwFeatMissing("opinion", "de.twitter.type.GoldOpinion");
     jcasType.ll_cas.ll_setStringValue(addr, ((GoldOpinion_Type)jcasType).casFeatCode_opinion, v);}    
+   
+    
+  //*--------------*
+  //* Feature: opinionScore
+
+  /** getter for opinionScore - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public float getOpinionScore() {
+    if (GoldOpinion_Type.featOkTst && ((GoldOpinion_Type)jcasType).casFeat_opinionScore == null)
+      jcasType.jcas.throwFeatMissing("opinionScore", "de.twitter.type.GoldOpinion");
+    return jcasType.ll_cas.ll_getFloatValue(addr, ((GoldOpinion_Type)jcasType).casFeatCode_opinionScore);}
+    
+  /** setter for opinionScore - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setOpinionScore(float v) {
+    if (GoldOpinion_Type.featOkTst && ((GoldOpinion_Type)jcasType).casFeat_opinionScore == null)
+      jcasType.jcas.throwFeatMissing("opinionScore", "de.twitter.type.GoldOpinion");
+    jcasType.ll_cas.ll_setFloatValue(addr, ((GoldOpinion_Type)jcasType).casFeatCode_opinionScore, v);}    
   }
 
     

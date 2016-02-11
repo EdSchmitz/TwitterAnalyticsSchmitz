@@ -12,9 +12,10 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.twitter.reader.SubjClue;
-import de.twitter.reader.SubjectClueReader;
 import de.twitter.type.DetectedOpinion;
+import de.twitter.type.GoldOpinion;
+import de.twitter.utils.SubjClue;
+import de.twitter.utils.SubjectClueReader;
 
 /*
  * The OpinionClassifier will take several factors into consideration when tagging a tweet.
@@ -49,7 +50,6 @@ public class OpinionClassifier extends JCasAnnotator_ImplBase {
 		 * find occurence of tokens in the dictionary and increase corrosponding counter.
 		 */
 		for (Token t : tokens){
-			Iterator dict = subjectDictionary.iterator();
 			for (int i = 0; i < subjectDictionary.size(); i++){
 				SubjClue currentWord = subjectDictionary.get(i);
 				if (currentWord.equals(t.getCoveredText())){
@@ -78,24 +78,35 @@ public class OpinionClassifier extends JCasAnnotator_ImplBase {
 			}		
 		}
 		
-		int approximation = strongNegatives*-2+weakNegatives*-1+weakPositives*1+strongPositives*2;
+		float approximation = strongNegatives*-3.5f+weakNegatives*-2f+weakPositives*1.5f+strongPositives*3f;
+		int neutralImpact = weakNeutrals * 1 + strongNeutrals * 2;
+		if (neutralImpact != 0){
+			approximation /= neutralImpact;
+		}
 		
-		if (approximation < 0){
+		GoldOpinion goldApprox = JCasUtil.selectSingle(jcas, GoldOpinion.class);
+		goldApprox.setOpinionScore(approximation);
+		
+		if (approximation < -0.2f){
 	        DetectedOpinion opinionAnno = new DetectedOpinion(jcas);
 	        opinionAnno.setOpinion("negative");
+	        opinionAnno.setOpinionScore(approximation);
 	        opinionAnno.addToIndexes();
 		}
-		else if (approximation > 0){
+		else if (approximation > 0.5f){
 	        DetectedOpinion opinionAnno = new DetectedOpinion(jcas);
 	        opinionAnno.setOpinion("positive");
+	        opinionAnno.setOpinionScore(approximation);
 	        opinionAnno.addToIndexes();
 		}
 		else {
 	        DetectedOpinion opinionAnno = new DetectedOpinion(jcas);
 	        opinionAnno.setOpinion("neutral");
+	        opinionAnno.setOpinionScore(approximation);
 	        opinionAnno.addToIndexes();
 		}
 
+		
 
 	}
 

@@ -1,5 +1,7 @@
 package de.unidue.langtech.teaching.pp.example;
 
+import javax.swing.plaf.ActionMapUIResource;
+
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -34,6 +36,14 @@ public class EvaluatorExample
     private int nrOfNeutralDocumentsDetectedAsNeutral;
     private int nrOfNeutralDocumentsDetectedAsPositive;
     
+    private float actualPositiveSum;
+    private float actualNegativeSum;
+    private float actualNeutralSum;
+    
+    private float detectedPositiveSum;
+    private float detectedNegativeSum;
+    private float detectedNeutralSum;
+    
     
     
     
@@ -62,6 +72,14 @@ public class EvaluatorExample
         nrOfNeutralDocumentsDetectedAsNegative = 0;
         nrOfNeutralDocumentsDetectedAsNeutral = 0;
         nrOfNeutralDocumentsDetectedAsPositive = 0;
+        
+        actualNegativeSum = 0f;
+        actualNeutralSum = 0f;
+        actualPositiveSum = 0f;
+        
+        detectedNegativeSum = 0f;
+        detectedNeutralSum = 0f;
+        detectedPositiveSum = 0f;
     }
     
     
@@ -89,27 +107,30 @@ public class EvaluatorExample
         nrOfDocuments++;
         
         if (actual.getOpinion().equals("positive")){
+        	actualPositiveSum += actual.getOpinionScore();
         	nrOfPositiveDocuments++;
         	switch (detected.getOpinion()){
-        	case "positive" : nrOfPositiveDocumentsDetectedAsPositive++; break;
-        	case "negative" : nrOfPositiveDocumentsDetectedAsNegative++; break;
-        	case "neutral" : nrOfPositiveDocumentsDetectedAsNeutral++; break;
+        	case "positive" : nrOfPositiveDocumentsDetectedAsPositive++; detectedPositiveSum+=detected.getOpinionScore(); break;
+        	case "negative" : nrOfPositiveDocumentsDetectedAsNegative++; detectedNegativeSum+=detected.getOpinionScore();break;
+        	case "neutral" : nrOfPositiveDocumentsDetectedAsNeutral++; detectedNeutralSum+=detected.getOpinionScore();break;
         	}
         }
         if (actual.getOpinion().equals("negative")){
+        	actualNegativeSum += actual.getOpinionScore();
         	nrOfNegativeDocuments++;
         	switch (detected.getOpinion()){
-        	case "positive" : nrOfNegativeDocumentsDetectedAsPositive++; break;
-        	case "negative" : nrOfNegativeDocumentsDetectedAsNegative++; break;
-        	case "neutral" : nrOfNegativeDocumentsDetectedAsNeutral++; break;
+        	case "positive" : nrOfNegativeDocumentsDetectedAsPositive++; detectedPositiveSum+=detected.getOpinionScore();break;
+        	case "negative" : nrOfNegativeDocumentsDetectedAsNegative++; detectedNegativeSum+=detected.getOpinionScore();break;
+        	case "neutral" : nrOfNegativeDocumentsDetectedAsNeutral++; detectedNeutralSum+=detected.getOpinionScore();break;
         	}
         }
         if (actual.getOpinion().equals("neutral")){
+        	actualNeutralSum += actual.getOpinionScore();
         	nrOfNeutralDocuments++;
         	switch (detected.getOpinion()){
-        	case "positive" : nrOfNeutralDocumentsDetectedAsPositive++; break;
-        	case "negative" : nrOfNeutralDocumentsDetectedAsNegative++; break;
-        	case "neutral" : nrOfNeutralDocumentsDetectedAsNeutral++; break;
+        	case "positive" : nrOfNeutralDocumentsDetectedAsPositive++; detectedPositiveSum+=detected.getOpinionScore();break;
+        	case "negative" : nrOfNeutralDocumentsDetectedAsNegative++; detectedNegativeSum+=detected.getOpinionScore();break;
+        	case "neutral" : nrOfNeutralDocumentsDetectedAsNeutral++; detectedNeutralSum+=detected.getOpinionScore();break;
         	}
         }
     }
@@ -127,6 +148,8 @@ public class EvaluatorExample
         System.out.println("---------BEGIN OF EVALUATION---------");
         
         System.out.println(correct + " out of " + nrOfDocuments + " are correct.");
+        float percent = (float)correct/(float)nrOfDocuments*100;
+        System.out.println("That is a rate of "+percent+"%");
     	System.out.println("--------------------------------");
     	
         System.out.println("There were "+nrOfPositiveDocuments+" positive documents.");
@@ -139,6 +162,7 @@ public class EvaluatorExample
         System.out.println("Of these "+nrOfNegativeDocumentsDetectedAsPositive+" were detected FALSE AS POSITIVE");
         System.out.println("Of these "+nrOfNegativeDocumentsDetectedAsNegative+" were detected CORRECT AS NEGATIVE");
         System.out.println("Of these "+nrOfNegativeDocumentsDetectedAsNeutral+" were detected FALSE AS NEUTRAL");
+
     	System.out.println("--------------------------------");
         
         System.out.println("There were "+nrOfNeutralDocuments+" neutral documents.");
@@ -149,13 +173,45 @@ public class EvaluatorExample
     	
     	int detectedPositives = nrOfPositiveDocumentsDetectedAsPositive+nrOfNegativeDocumentsDetectedAsPositive+nrOfNeutralDocumentsDetectedAsPositive;
     	System.out.println("The system detected a total of " +detectedPositives+ " positive entrys (there were " + nrOfPositiveDocuments + ")");
+    	System.out.println("\t The precision score for positive documents is: " + ((float)nrOfPositiveDocumentsDetectedAsPositive/(float)detectedPositives*100)+"%");       
+        System.out.println("\t The recall score for positive documents is: " + ((float)nrOfPositiveDocumentsDetectedAsPositive/(float)nrOfPositiveDocuments*100)+"%");
         
+    	
     	int detectedNegatives = nrOfPositiveDocumentsDetectedAsNegative+nrOfNegativeDocumentsDetectedAsNegative+nrOfNeutralDocumentsDetectedAsNegative;
     	System.out.println("The system detected a total of " +detectedNegatives+ " negative entrys (there were " + nrOfNegativeDocuments + ")");
+        System.out.println("\t The precision score for negative documents is: " + ((float)nrOfNegativeDocumentsDetectedAsNegative/(float)detectedNegatives*100)+"%");       
+        System.out.println("\t The recall score for negative documents is: " + ((float)nrOfNegativeDocumentsDetectedAsNegative/(float)nrOfNegativeDocuments*100)+"%");
+        
         
     	int detectedNeutrals = nrOfPositiveDocumentsDetectedAsNeutral+nrOfNegativeDocumentsDetectedAsNeutral+nrOfNeutralDocumentsDetectedAsNeutral;
     	System.out.println("The system detected a total of " +detectedNeutrals+ " neutral entrys (there were " + nrOfNeutralDocuments + ")");
-        
+    	System.out.println("\t The precision score for neutral documents is: " + ((float)nrOfNeutralDocumentsDetectedAsNeutral/(float)detectedNeutrals*100)+"%");       
+        System.out.println("\t The recall score for neutral documents is: " + ((float)nrOfNeutralDocumentsDetectedAsNeutral/(float)nrOfNeutralDocuments*100)+"%");
+         
+    	
+    	System.out.println("-----------------------");
+    	System.out.println("-----------------------");
+    	
+    	float actualPositiveAverageScore = actualPositiveSum / nrOfPositiveDocuments;
+    	System.out.println("The average score for actually positive documents was: "+actualPositiveAverageScore);
+    	float detectedPositiveAverageScore = detectedPositiveSum / detectedPositives;
+    	System.out.println("The average score for detected positive documents was: "+detectedPositiveAverageScore);
+    	
+    	System.out.println("-----------------------");
+    	
+    	float actualNegativeAverageScore = actualNegativeSum / nrOfNegativeDocuments;
+    	System.out.println("The average score for actually negative documents was: "+actualNegativeAverageScore);
+    	float detectedNegativeAverageScore = detectedNegativeSum / detectedNegatives;
+    	System.out.println("The average score for detected negative documents was: "+detectedNegativeAverageScore);
+    	
+    	System.out.println("-----------------------");
+    	
+    	float actualNeutralAverageScore = actualNeutralSum / nrOfNeutralDocuments;
+    	System.out.println("The average score for actually neutral documents was: "+actualNeutralAverageScore);
+    	float detectedNeutralAverageScore = detectedNeutralSum / detectedNeutrals;
+    	System.out.println("The average score for detected neutral documents was: "+detectedNeutralAverageScore);
+    	
+    	
     	
     }
 }

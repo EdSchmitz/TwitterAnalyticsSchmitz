@@ -16,6 +16,11 @@ It can be either negative, neutral or positive, depending on the general opinion
           <description>can be negative, neutral or positive</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
+      <featureDescription>
+          <name>opinionScore</name>
+          <description/>
+          <rangeTypeName>uima.cas.Float</rangeTypeName>
+        </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
@@ -31,7 +36,7 @@ It can be either negative, neutral or positive, depending on the general opinion
       <featureDescription>
           <name>opinionScore</name>
           <description>This will store the accumulated scores of positive/negative rated words</description>
-          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          <rangeTypeName>uima.cas.Float</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>

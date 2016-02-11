@@ -12,8 +12,8 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
-import de.twitter.reader.SubjClue;
-import de.twitter.reader.SubjectClueReader;
+import de.twitter.utils.SubjClue;
+import de.twitter.utils.SubjectClueReader;
 
 public class SubjectClueReaderTest {
 

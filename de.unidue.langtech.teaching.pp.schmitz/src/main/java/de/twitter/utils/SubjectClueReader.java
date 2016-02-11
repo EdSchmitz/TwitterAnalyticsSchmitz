@@ -1,4 +1,4 @@
-package de.twitter.reader;
+package de.twitter.utils;
 
 import java.util.List;
 import java.io.File;

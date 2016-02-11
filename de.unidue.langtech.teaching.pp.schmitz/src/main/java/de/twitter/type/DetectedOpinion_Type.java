@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** The opinion that is determined by the opinion evaluator
- * Updated by JCasGen Wed Feb 10 01:11:57 CET 2016
+ * Updated by JCasGen Wed Feb 10 10:22:39 CET 2016
  * @generated */
 public class DetectedOpinion_Type extends Annotation_Type {
   /** @generated 
@@ -78,19 +78,19 @@ public class DetectedOpinion_Type extends Annotation_Type {
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
-  public int getOpinionScore(int addr) {
+  public float getOpinionScore(int addr) {
         if (featOkTst && casFeat_opinionScore == null)
       jcas.throwFeatMissing("opinionScore", "de.twitter.type.DetectedOpinion");
-    return ll_cas.ll_getIntValue(addr, casFeatCode_opinionScore);
+    return ll_cas.ll_getFloatValue(addr, casFeatCode_opinionScore);
   }
   /** @generated
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
-  public void setOpinionScore(int addr, int v) {
+  public void setOpinionScore(int addr, float v) {
         if (featOkTst && casFeat_opinionScore == null)
       jcas.throwFeatMissing("opinionScore", "de.twitter.type.DetectedOpinion");
-    ll_cas.ll_setIntValue(addr, casFeatCode_opinionScore, v);}
+    ll_cas.ll_setFloatValue(addr, casFeatCode_opinionScore, v);}
     
   
 
@@ -110,7 +110,7 @@ public class DetectedOpinion_Type extends Annotation_Type {
     casFeatCode_opinion  = (null == casFeat_opinion) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_opinion).getCode();
 
  
-    casFeat_opinionScore = jcas.getRequiredFeatureDE(casType, "opinionScore", "uima.cas.Integer", featOkTst);
+    casFeat_opinionScore = jcas.getRequiredFeatureDE(casType, "opinionScore", "uima.cas.Float", featOkTst);
     casFeatCode_opinionScore  = (null == casFeat_opinionScore) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_opinionScore).getCode();
 
   }

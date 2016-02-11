@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** The opinion that is determined by the opinion evaluator
- * Updated by JCasGen Wed Feb 10 01:11:57 CET 2016
+ * Updated by JCasGen Wed Feb 10 10:22:39 CET 2016
  * XML source: C:/Users/Edgar/Universität/Praxisprojekt Textanalysewerkzeuge/eclipse/git/TwitterAnalyticsSchmitz/de.unidue.langtech.teaching.pp.schmitz/src/main/resources/desc/type/OpinionType.xml
  * @generated */
 public class DetectedOpinion extends Annotation {
@@ -105,19 +105,19 @@ public class DetectedOpinion extends Annotation {
    * @generated
    * @return value of the feature 
    */
-  public int getOpinionScore() {
+  public float getOpinionScore() {
     if (DetectedOpinion_Type.featOkTst && ((DetectedOpinion_Type)jcasType).casFeat_opinionScore == null)
       jcasType.jcas.throwFeatMissing("opinionScore", "de.twitter.type.DetectedOpinion");
-    return jcasType.ll_cas.ll_getIntValue(addr, ((DetectedOpinion_Type)jcasType).casFeatCode_opinionScore);}
+    return jcasType.ll_cas.ll_getFloatValue(addr, ((DetectedOpinion_Type)jcasType).casFeatCode_opinionScore);}
     
   /** setter for opinionScore - sets This will store the accumulated scores of positive/negative rated words 
    * @generated
    * @param v value to set into the feature 
    */
-  public void setOpinionScore(int v) {
+  public void setOpinionScore(float v) {
     if (DetectedOpinion_Type.featOkTst && ((DetectedOpinion_Type)jcasType).casFeat_opinionScore == null)
       jcasType.jcas.throwFeatMissing("opinionScore", "de.twitter.type.DetectedOpinion");
-    jcasType.ll_cas.ll_setIntValue(addr, ((DetectedOpinion_Type)jcasType).casFeatCode_opinionScore, v);}    
+    jcasType.ll_cas.ll_setFloatValue(addr, ((DetectedOpinion_Type)jcasType).casFeatCode_opinionScore, v);}    
   }
 
     

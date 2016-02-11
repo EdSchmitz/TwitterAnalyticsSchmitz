@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** The actual opinion shown in this tweet
- * Updated by JCasGen Wed Feb 10 01:11:57 CET 2016
+ * Updated by JCasGen Wed Feb 10 10:22:39 CET 2016
  * @generated */
 public class GoldOpinion_Type extends Annotation_Type {
   /** @generated 
@@ -69,6 +69,30 @@ public class GoldOpinion_Type extends Annotation_Type {
     ll_cas.ll_setStringValue(addr, casFeatCode_opinion, v);}
     
   
+ 
+  /** @generated */
+  final Feature casFeat_opinionScore;
+  /** @generated */
+  final int     casFeatCode_opinionScore;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public float getOpinionScore(int addr) {
+        if (featOkTst && casFeat_opinionScore == null)
+      jcas.throwFeatMissing("opinionScore", "de.twitter.type.GoldOpinion");
+    return ll_cas.ll_getFloatValue(addr, casFeatCode_opinionScore);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setOpinionScore(int addr, float v) {
+        if (featOkTst && casFeat_opinionScore == null)
+      jcas.throwFeatMissing("opinionScore", "de.twitter.type.GoldOpinion");
+    ll_cas.ll_setFloatValue(addr, casFeatCode_opinionScore, v);}
+    
+  
 
 
 
@@ -84,6 +108,10 @@ public class GoldOpinion_Type extends Annotation_Type {
  
     casFeat_opinion = jcas.getRequiredFeatureDE(casType, "opinion", "uima.cas.String", featOkTst);
     casFeatCode_opinion  = (null == casFeat_opinion) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_opinion).getCode();
+
+ 
+    casFeat_opinionScore = jcas.getRequiredFeatureDE(casType, "opinionScore", "uima.cas.Float", featOkTst);
+    casFeatCode_opinionScore  = (null == casFeat_opinionScore) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_opinionScore).getCode();
 
   }
 }

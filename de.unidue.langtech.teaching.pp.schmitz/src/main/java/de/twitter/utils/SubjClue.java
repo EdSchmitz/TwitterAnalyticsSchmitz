@@ -1,4 +1,4 @@
-package de.twitter.reader;
+package de.twitter.utils;
 
 public class SubjClue {
 
@@ -45,7 +45,7 @@ public class SubjClue {
 	
 	public boolean equals(Object o){
 		if (o instanceof String){
-			if (this.word.equals(o)) return true;
+			if (this.word.toLowerCase().equals(o)) return true;
 		}
 		return false;
 	}
