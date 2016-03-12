@@ -8,11 +8,17 @@ public class SubjClue {
 	 * 2. is this word positive/negative/neutral
 	 * 3. is this word considered a "strog" word
 	 * 4. is this word already stemmed?
+	 * 5. is this a smiley?
 	 */
 	private boolean strong;
+	private boolean smiley;
 	private String word;
 	private boolean stemmed;
 	private String priorpolarity;
+	
+	public boolean isSmiley() {
+		return smiley;
+	}
 	
 	public boolean isStrong() {
 		return strong;
@@ -32,11 +38,12 @@ public class SubjClue {
 
 
 	
-	public SubjClue(boolean strong, String w, boolean s, String p){
+	public SubjClue(boolean strong, String w, boolean s, String p, boolean smiley){
 		this.strong = strong;
 		this.word = w;
 		this.stemmed = s;
 		this.priorpolarity = p;
+		this.smiley = smiley;
 	}
 	
 	public String toString(){

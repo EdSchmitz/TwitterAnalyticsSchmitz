@@ -1,4 +1,4 @@
-package de.unidue.langtech.teaching.pp.example;
+package de.twitter.pipeline;
 
 import java.util.Collection;
 
@@ -18,7 +18,7 @@ import de.unidue.langtech.teaching.pp.type.DetectedLanguage;
  * @author Schmitz
  *
  */
-public class BaselineExample
+public class BaselineTweets
     extends JCasAnnotator_ImplBase
 {
 
@@ -26,10 +26,10 @@ public class BaselineExample
     public void process(JCas jcas)
         throws AnalysisEngineProcessException
     {
-        System.out.println("Document is: " + jcas.getDocumentText());
+//        System.out.println("Document is: " + jcas.getDocumentText());
         
         Collection<Token> tokens = JCasUtil.select(jcas, Token.class);
-        System.out.println("CAS contains " + tokens.size() + " tokens.");
+//        System.out.println("CAS contains " + tokens.size() + " tokens.");
         
         DetectedOpinion opinionAnno = new DetectedOpinion(jcas);
         opinionAnno.setOpinion("positive");

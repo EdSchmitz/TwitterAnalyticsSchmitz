@@ -61,6 +61,8 @@ public class SubjectClueReaderTest {
 		 * Will add some positive examples at a later time...
 		 */
 		
+		
+		
 		SubjClue entry1 = shortList.get(0);
 		SubjClue entry2 = shortList.get(1);
 		SubjClue entry3 = shortList.get(2);

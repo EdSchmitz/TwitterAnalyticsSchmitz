@@ -76,17 +76,13 @@ public class TweetReader
         // split line into gold standard rating and actual text
         String[] parts = lines.get(currentLine).split("\t");
         
-        /* Checking the line format. Should be: TWEET-ID <<TAB>> ANOTHER-NUMBER <<TAB>> GOLD-RATING <<TAB>> TWEET-TEXT
-         * may be followed by an empty line (optional input format)
+        /* Checking the line format. Should be: TWEET-ID <<TAB>> ANOTHER-NUMBER(non-relevant) <<TAB>> GOLD-RATING <<TAB>> TWEET-TEXT
         */
         
-        if (parts.length == 1){
+        //Lines that dont follow the format are skipped
+        while (parts.length != 4){
         	currentLine++;
         	parts = lines.get(currentLine).split("\t");
-        }
-        if (parts.length != 4) {
-        	System.out.println("SIZE IS: "+parts.length+" SHOULD BE: 4" + "\n TEXT STARTS WITH \"" + parts[0] +"\"");
-            throw new IOException("Wrong line format: " + lines.get(currentLine));
         }
         
         // add gold standard value of opinion as annotation
@@ -97,7 +93,7 @@ public class TweetReader
         // add actual text of the document
         jcas.setDocumentText(parts[3]);
         
-        // set document language to english
+        // set document language to "en"
         jcas.setDocumentLanguage("en");
         
         currentLine++;

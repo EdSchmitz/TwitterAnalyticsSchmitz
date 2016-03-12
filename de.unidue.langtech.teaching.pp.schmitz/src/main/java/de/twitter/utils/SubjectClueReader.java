@@ -43,6 +43,7 @@ public class SubjectClueReader {
 				 * given.
 				 */
 				boolean strong = parts[0].contains("strong");
+				boolean smiley = parts[0].contains("smiley");
 
 				/*
 				 * The word line is the substring of "word1=WORD" the "W" is
@@ -60,7 +61,7 @@ public class SubjectClueReader {
 				}
 				String polarity = parts[5].substring(14);
 				
-				SubjClue nextSubjClue = new SubjClue(strong, word, stemmed, polarity);
+				SubjClue nextSubjClue = new SubjClue(strong, word, stemmed, polarity, smiley);
 				resultList.add(nextSubjClue);
 				currentLine++;
 			}

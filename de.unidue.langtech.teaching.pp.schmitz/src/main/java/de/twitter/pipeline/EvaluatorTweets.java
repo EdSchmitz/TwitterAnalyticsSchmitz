@@ -1,4 +1,4 @@
-package de.unidue.langtech.teaching.pp.example;
+package de.twitter.pipeline;
 
 import javax.swing.plaf.ActionMapUIResource;
 
@@ -14,7 +14,7 @@ import de.twitter.type.GoldOpinion;
 import de.unidue.langtech.teaching.pp.type.DetectedLanguage;
 import de.unidue.langtech.teaching.pp.type.GoldLanguage;
 
-public class EvaluatorExample
+public class EvaluatorTweets
     extends JCasAnnotator_ImplBase
 {
 
@@ -172,21 +172,27 @@ public class EvaluatorExample
     	System.out.println("--------------------------------");
     	
     	int detectedPositives = nrOfPositiveDocumentsDetectedAsPositive+nrOfNegativeDocumentsDetectedAsPositive+nrOfNeutralDocumentsDetectedAsPositive;
+    	float positivePrecision = ((float)nrOfPositiveDocumentsDetectedAsPositive/(float)detectedPositives*100);
+    	float positiveRecall = ((float)nrOfPositiveDocumentsDetectedAsPositive/(float)nrOfPositiveDocuments*100);
     	System.out.println("The system detected a total of " +detectedPositives+ " positive entrys (there were " + nrOfPositiveDocuments + ")");
-    	System.out.println("\t The precision score for positive documents is: " + ((float)nrOfPositiveDocumentsDetectedAsPositive/(float)detectedPositives*100)+"%");       
-        System.out.println("\t The recall score for positive documents is: " + ((float)nrOfPositiveDocumentsDetectedAsPositive/(float)nrOfPositiveDocuments*100)+"%");
+    	System.out.println("\t The precision score for positive documents is: " + positivePrecision+"%");       
+        System.out.println("\t The recall score for positive documents is: " + positiveRecall+"%");
         
     	
     	int detectedNegatives = nrOfPositiveDocumentsDetectedAsNegative+nrOfNegativeDocumentsDetectedAsNegative+nrOfNeutralDocumentsDetectedAsNegative;
+    	float negativePrecision = ((float)nrOfNegativeDocumentsDetectedAsNegative/(float)detectedNegatives*100);
+    	float negativeRecall = ((float)nrOfNegativeDocumentsDetectedAsNegative/(float)nrOfNegativeDocuments*100);
     	System.out.println("The system detected a total of " +detectedNegatives+ " negative entrys (there were " + nrOfNegativeDocuments + ")");
-        System.out.println("\t The precision score for negative documents is: " + ((float)nrOfNegativeDocumentsDetectedAsNegative/(float)detectedNegatives*100)+"%");       
-        System.out.println("\t The recall score for negative documents is: " + ((float)nrOfNegativeDocumentsDetectedAsNegative/(float)nrOfNegativeDocuments*100)+"%");
+        System.out.println("\t The precision score for negative documents is: " + negativePrecision+"%");       
+        System.out.println("\t The recall score for negative documents is: " + negativeRecall+"%");
         
         
     	int detectedNeutrals = nrOfPositiveDocumentsDetectedAsNeutral+nrOfNegativeDocumentsDetectedAsNeutral+nrOfNeutralDocumentsDetectedAsNeutral;
+    	float neutralPrecision = ((float)nrOfNeutralDocumentsDetectedAsNeutral/(float)detectedNeutrals*100);
+    	float neutralRecall = ((float)nrOfNeutralDocumentsDetectedAsNeutral/(float)nrOfNeutralDocuments*100);
     	System.out.println("The system detected a total of " +detectedNeutrals+ " neutral entrys (there were " + nrOfNeutralDocuments + ")");
-    	System.out.println("\t The precision score for neutral documents is: " + ((float)nrOfNeutralDocumentsDetectedAsNeutral/(float)detectedNeutrals*100)+"%");       
-        System.out.println("\t The recall score for neutral documents is: " + ((float)nrOfNeutralDocumentsDetectedAsNeutral/(float)nrOfNeutralDocuments*100)+"%");
+    	System.out.println("\t The precision score for neutral documents is: " + neutralPrecision+"%");       
+        System.out.println("\t The recall score for neutral documents is: " + neutralRecall+"%");
          
     	
     	System.out.println("-----------------------");
@@ -211,7 +217,15 @@ public class EvaluatorExample
     	float detectedNeutralAverageScore = detectedNeutralSum / detectedNeutrals;
     	System.out.println("The average score for detected neutral documents was: "+detectedNeutralAverageScore);
     	
-    	
-    	
+    	System.out.println("-----------------------");
+    	float f1Positive = (2*positivePrecision*positiveRecall)/(positivePrecision+positiveRecall);
+    	float f1Negative = (2*negativePrecision*negativeRecall)/(negativePrecision+negativeRecall);
+    	float f1Neutral = (2*neutralPrecision*neutralRecall)/(neutralPrecision+neutralRecall);
+    	System.out.println("F1-Measure for positive: "+f1Positive);
+    	System.out.println("F1-Measure for negative: "+f1Negative);
+    	System.out.println("F1-Measure for neutral: "+f1Neutral);
+    	System.out.println("-----------------------");
+    	System.out.println("-----------------------");
+    	System.out.println("Final Score following SemEval-Scoring: "+(f1Positive+f1Negative)/2);
     }
 }

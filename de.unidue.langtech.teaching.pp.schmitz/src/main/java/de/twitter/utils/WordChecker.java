@@ -15,7 +15,7 @@ public class WordChecker {
 	 * It might come in handy to enrich the quality of input files.
 	 */
 	
-	final static String TESTED_WORD = "game";	
+	final static String TESTED_WORD = "pumped";	
 	
 		
 	public static void main(String[] args) throws ResourceInitializationException {
@@ -42,8 +42,7 @@ public class WordChecker {
 				currentline++;
 				parts = lines.get(currentline).split("\t");
 			}
-			String singeWord = " " + TESTED_WORD.toLowerCase() + " ";
-			if (parts[3].toLowerCase().contains(singeWord)){
+			if (parts[3].toLowerCase().contains(TESTED_WORD)){
 				switch (parts[2]){
 				case "positive" : asPositive++; break;
 				case "negative" : asNegative++; break;
