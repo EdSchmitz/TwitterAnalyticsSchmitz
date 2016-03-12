@@ -1,4 +1,4 @@
-package de.twitter.pipeline;
+package de.twitter.pipelinemodules;
 
 import java.util.Collection;
 

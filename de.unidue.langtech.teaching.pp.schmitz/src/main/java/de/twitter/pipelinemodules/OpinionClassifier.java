@@ -1,4 +1,4 @@
-package de.twitter.classifier;
+package de.twitter.pipelinemodules;
 
 import java.io.File;
 import java.util.Collection;
@@ -16,10 +16,10 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.twitter.reader.SubjectClueReader;
 import de.twitter.type.DetectedOpinion;
 import de.twitter.type.GoldOpinion;
 import de.twitter.utils.SubjClue;
-import de.twitter.utils.SubjectClueReader;
 
 /*
  * The OpinionClassifier will take several factors into consideration when tagging a tweet.

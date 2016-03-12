@@ -1,4 +1,4 @@
-package de.twitter.pipeline;
+package de.twitter.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import de.twitter.type.DetectedOpinion;
 import de.twitter.type.GoldOpinion;
 
-public class wrongClassifiedDisplayer extends JCasAnnotator_ImplBase{
+public class WrongClassifiedDisplayer extends JCasAnnotator_ImplBase{
 
 	// insert "negative" "neutral" or "positive" as needed, to check the wrong classified tweets
 	// so you can manually try to find similarities

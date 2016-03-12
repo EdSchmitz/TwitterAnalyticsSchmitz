@@ -1,4 +1,4 @@
-package de.unidue.langtech.teaching.pp.example.pipeline;
+package de.twitter.executablePipeline;
 
 import org.apache.uima.fit.component.CasDumpWriter;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
@@ -6,11 +6,11 @@ import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetTokenizer;
-import de.twitter.classifier.OpinionClassifier;
-import de.twitter.pipeline.EvaluatorTweets;
-import de.twitter.pipeline.FrequencyEvaluator;
+import de.twitter.pipelinemodules.EvaluatorTweets;
+import de.twitter.pipelinemodules.FrequencyEvaluator;
+import de.twitter.pipelinemodules.OpinionClassifier;
 import de.twitter.reader.TweetReader;
-public class ExtendedPipeline
+public class FullTweetPipeline
 {
 
     public static void main(String[] args)
@@ -26,16 +26,21 @@ public class ExtendedPipeline
     	 * "twitter/resources/twitter_training_complete.txt" for 11338 tweets
     	 */
     	
+    	/*
+    	 * This pipeline will read and analyze the full 11338 tweets.
+    	 * Its output will be displayed on the console
+    	 */
+    	
         SimplePipeline.runPipeline(
                 CollectionReaderFactory.createReader(
                         TweetReader.class,
-                        TweetReader.PARAM_INPUT_TWEETS, "twitter/resources/tweets1k.txt"
+                        TweetReader.PARAM_INPUT_TWEETS, "twitter/resources/twitter_training_complete.txt"
                 ),
                 AnalysisEngineFactory.createEngineDescription(ArktweetTokenizer.class),
                 AnalysisEngineFactory.createEngineDescription(OpinionClassifier.class),
-                AnalysisEngineFactory.createEngineDescription(EvaluatorTweets.class),
-                AnalysisEngineFactory.createEngineDescription(CasDumpWriter.class),
-                AnalysisEngineFactory.createEngineDescription(FrequencyEvaluator.class)
+                AnalysisEngineFactory.createEngineDescription(EvaluatorTweets.class)
+//                AnalysisEngineFactory.createEngineDescription(CasDumpWriter.class),
+//                AnalysisEngineFactory.createEngineDescription(FrequencyEvaluator.class)
                 
         );
     }

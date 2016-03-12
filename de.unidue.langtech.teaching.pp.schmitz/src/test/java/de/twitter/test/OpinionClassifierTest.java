@@ -11,7 +11,7 @@ import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetTokenizer;
-import de.twitter.classifier.OpinionClassifier;
+import de.twitter.pipelinemodules.OpinionClassifier;
 import de.twitter.reader.TweetReader;
 import de.twitter.type.DetectedOpinion;
 

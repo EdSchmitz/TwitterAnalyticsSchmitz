@@ -1,4 +1,4 @@
-package de.twitter.utils;
+package de.twitter.reader;
 
 import java.util.List;
 import java.io.File;
@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.commons.io.FileUtils;
+
+import de.twitter.utils.SubjClue;
 
 public class SubjectClueReader {
 

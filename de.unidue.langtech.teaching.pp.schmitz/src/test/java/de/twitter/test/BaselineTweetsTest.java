@@ -9,7 +9,7 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
-import de.twitter.pipeline.BaselineTweets;
+import de.twitter.pipelinemodules.BaselineTweets;
 import de.twitter.reader.TweetReader;
 import de.twitter.type.DetectedOpinion;
 

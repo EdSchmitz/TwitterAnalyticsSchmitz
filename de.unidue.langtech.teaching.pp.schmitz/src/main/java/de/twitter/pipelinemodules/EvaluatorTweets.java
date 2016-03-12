@@ -1,4 +1,4 @@
-package de.twitter.pipeline;
+package de.twitter.pipelinemodules;
 
 import javax.swing.plaf.ActionMapUIResource;
 
@@ -94,7 +94,7 @@ public class EvaluatorTweets
     	DetectedOpinion detected = JCasUtil.selectSingle(jcas, DetectedOpinion.class);
     	GoldOpinion actual = JCasUtil.selectSingle(jcas, GoldOpinion.class);
 
-        System.out.println(actual.getOpinion() + " detected as " + detected.getOpinion());
+        //System.out.println(actual.getOpinion() + " detected as " + detected.getOpinion());
         
         if (actual.getOpinion().equals(detected.getOpinion())) correct++;
         

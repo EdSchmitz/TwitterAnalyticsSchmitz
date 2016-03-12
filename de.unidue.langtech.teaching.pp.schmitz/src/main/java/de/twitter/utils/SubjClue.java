@@ -3,7 +3,7 @@ package de.twitter.utils;
 public class SubjClue {
 
 	/* 
-	 * A Subjectivity Clue consists of 4 parts:
+	 * A Subjectivity Clue consists of 5 parts:
 	 * 1. the word itself
 	 * 2. is this word positive/negative/neutral
 	 * 3. is this word considered a "strog" word
