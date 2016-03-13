@@ -1,6 +1,5 @@
 package de.twitter.pipelinemodules;
 
-import javax.swing.plaf.ActionMapUIResource;
 
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -11,8 +10,6 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import de.twitter.type.DetectedOpinion;
 import de.twitter.type.GoldOpinion;
-import de.unidue.langtech.teaching.pp.type.DetectedLanguage;
-import de.unidue.langtech.teaching.pp.type.GoldLanguage;
 
 public class EvaluatorTweets
     extends JCasAnnotator_ImplBase

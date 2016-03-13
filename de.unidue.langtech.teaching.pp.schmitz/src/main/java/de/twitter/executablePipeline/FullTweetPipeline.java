@@ -1,13 +1,11 @@
 package de.twitter.executablePipeline;
 
-import org.apache.uima.fit.component.CasDumpWriter;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetTokenizer;
 import de.twitter.pipelinemodules.EvaluatorTweets;
-import de.twitter.pipelinemodules.FrequencyEvaluator;
 import de.twitter.pipelinemodules.OpinionClassifier;
 import de.twitter.reader.TweetReader;
 public class FullTweetPipeline
@@ -38,6 +36,7 @@ public class FullTweetPipeline
                 ),
                 AnalysisEngineFactory.createEngineDescription(ArktweetTokenizer.class),
                 AnalysisEngineFactory.createEngineDescription(OpinionClassifier.class),
+//                AnalysisEngineFactory.createEngineDescription(BaselineTweets.class),
                 AnalysisEngineFactory.createEngineDescription(EvaluatorTweets.class)
 //                AnalysisEngineFactory.createEngineDescription(CasDumpWriter.class),
 //                AnalysisEngineFactory.createEngineDescription(FrequencyEvaluator.class)

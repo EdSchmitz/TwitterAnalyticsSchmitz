@@ -1,6 +1,5 @@
 package de.twitter.test;
 
-import static org.junit.Assert.*;
 
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
@@ -9,10 +8,8 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
-import de.twitter.pipelinemodules.BaselineTweets;
 import de.twitter.pipelinemodules.FrequencyEvaluator;
 import de.twitter.reader.TweetReader;
-import de.twitter.type.DetectedOpinion;
 import de.twitter.type.GoldOpinion;
 
 public class FrequencyEvaluatorTest {
@@ -21,6 +18,8 @@ public class FrequencyEvaluatorTest {
 	//The Frequency evaluator is supposed to just print all the gold scores
 	//It helps to try to optimize the scoring weights
 	
+	//Since this has only a console return manual control is required
+	
 	@Test
 	public void testFrequencyEvaluator() throws Exception {
 		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(TweetReader.class,
@@ -28,7 +27,6 @@ public class FrequencyEvaluatorTest {
 		
 		FrequencyEvaluator eval = new FrequencyEvaluator();
 		eval.initialize(null);
-		int currentLine = 0;
 		for (JCas currentJCas : new JCasIterable(reader)) {
 			GoldOpinion go = JCasUtil.selectSingle(currentJCas, GoldOpinion.class);
 			if (Math.random()<0.5d){

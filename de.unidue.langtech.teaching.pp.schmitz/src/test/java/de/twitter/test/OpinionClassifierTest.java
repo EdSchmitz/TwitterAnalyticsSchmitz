@@ -2,7 +2,6 @@ package de.twitter.test;
 
 import static org.junit.Assert.*;
 
-import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.pipeline.JCasIterable;
@@ -16,9 +15,6 @@ import de.twitter.reader.TweetReader;
 import de.twitter.type.DetectedOpinion;
 
 public class OpinionClassifierTest {
-
-	//FIXME Something is wrong in here, i can't quite figure out what
-	// When runnung the test the tokenizer refuses to tokenize the cas
 	
 	@Test
 	public void testOpinionClassifier() throws Exception {

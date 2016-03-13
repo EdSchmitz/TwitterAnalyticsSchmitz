@@ -5,11 +5,6 @@ import static org.junit.Assert.*;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.uima.collection.CollectionReaderDescription;
-import org.apache.uima.fit.factory.CollectionReaderFactory;
-import org.apache.uima.fit.pipeline.JCasIterable;
-import org.apache.uima.fit.util.JCasUtil;
-import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
 import de.twitter.reader.SubjectClueReader;

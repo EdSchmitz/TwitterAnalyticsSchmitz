@@ -17,7 +17,6 @@ import org.apache.uima.util.Progress;
 import org.apache.uima.util.ProgressImpl;
 
 import de.twitter.type.GoldOpinion;
-import de.unidue.langtech.teaching.pp.type.GoldLanguage;
 
 /**
  * @author Schmitz

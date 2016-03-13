@@ -1,16 +1,11 @@
 package de.twitter.pipelinemodules;
 
-import java.io.File;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
-import org.apache.uima.fit.component.initialize.ConfigurationParameterInitializer;
-import org.apache.uima.fit.component.initialize.ExternalResourceInitializer;
-import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -112,7 +107,7 @@ public class OpinionClassifier extends JCasAnnotator_ImplBase {
 
 		float approximation = strongNegatives * -4.6f + weakNegatives * -2f + weakPositives * 1.5f
 				+ strongPositives * 3f + 7f * positiveSmileys + -7f * negativeSmileys;
-//		float neutralImpact = weakNeutrals * 1f + strongNeutrals * 1.3f;
+//		float neutralImpact = weakNeutrals * 1.1f + strongNeutrals * 1.3f;
 //		if (neutralImpact != 0) {
 //			approximation /= neutralImpact;
 //		}
